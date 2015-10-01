@@ -1,3 +1,5 @@
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 # EventBus
 A simple and type-safe facade for ```NSNotification``` with custom payload.
 
@@ -7,7 +9,7 @@ A simple and type-safe facade for ```NSNotification``` with custom payload.
 
 To use EventBus on any class, just import ```EventBus``` and adopt ```BusUser```protocol.
 
-Here is a simple (useless) example that registers to an event and post it:
+Here is a simple (useless) example that registers to an event and posts it:
 ```swift
 import EventBus
 
@@ -30,31 +32,34 @@ class TestNotification: BusUser {
 
 ### Posting event
 
-Here is how to post an event to inform that user did login:
+An event is a simple class or structure, which name describes what it is (UserDidLogin or UserDidRegisterToNewsletter for example). Events can have members (to allow sending data along with it) or not.
+Here is how to declare an event:
 
 ```swift
-
-// Events are simple structures or classes created to pass data
+// An event with payload, to allow passing user name when user has logged in
 struct UserDidLoginEvent {
     let userName: String
 }
-
-defaultBus.postEvent(UserDidLoginEvent(userName: "User1"))
 ```
 
-If you do not have any payload, your event class can be a simple empty structure :
-```swift
-import EventBus
+If you do not have any payload, your event class can be a simple empty structure:
 
-// Events are simple structures or classes created to pass data
+```swift
+// A simple event with no payload
 struct UserDidLogoutEvent {}
+```
+
+Here is how to post instances of former events:
+
+```swift
+defaultBus.postEvent(UserDidLoginEvent(userName: "User1"))
 
 defaultBus.postEvent(UserDidLogoutEvent())
 ```
 
 ### Registering to events
 
-Here is how to register for the an event:
+Here is how to register to an event:
 
 ```swift
 defaultBus.registerForEvent(UserDidLoginEvent.self) {
@@ -63,11 +68,25 @@ defaultBus.registerForEvent(UserDidLoginEvent.self) {
 }
 ```
 
-If the event does not have any payload, or you don't need to access the event, you can use the short version:
+If the event does not have any payload, or you don't need to access it, you can use the short version:
+
 ```swift
-defaultBus.registerForEvent(UserDidLoginEvent.self) {
-    print("User name is \(event.userName)")
+defaultBus.registerForEvent(UserDidLogoutEvent.self) {
+    print("User did logout)")
 }
+```
+
+### Unregistering
+
+To avoid memory leaks, you must unregister from registered events:
+
+```swift
+defaultBus.unregisterForEvent(UserDidLoginEvent.self)
+```
+
+You can also unregister from all registered events:
+```swift
+defaultBus.unregisterForAllEvents()
 ```
 
 ## Requirements
@@ -84,3 +103,4 @@ To integrate EventBus into your Xcode project using Carthage, specify it in your
 ```ogdl
 github "benjamincombes/EventBus"
 ```
+r
