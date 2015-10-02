@@ -9,7 +9,7 @@ public class Bus {
 
     private static var busObservers = [String: Any]()
 
-    let target: BusUser
+    weak var target: BusUser?
 
     init(target: BusUser) {
         self.target = target
@@ -24,13 +24,17 @@ public class Bus {
     bus.registerForEvent(CustomEvent.self) { (event: CustomEvent) in print("Received") }
     */
     public func registerForEvent<Event:Any>(eventType: Event.Type, onPosted onPostedCallback: (Event) -> Void) {
-        let busObserver = busObserverForType(eventType)
-        busObserver.register(eventType, forTarget: target, onPosted: onPostedCallback)
+        if let target = self.target {
+            let busObserver = busObserverForType(eventType)
+            busObserver.register(eventType, forTarget: target, onPosted: onPostedCallback)
+        }
     }
 
     public func registerForEvent<Event:Any>(eventType: Event.Type, onPostedEmpty onPostedEmptyCallback: (Void) -> Void) {
-        let busObserver = busObserverForType(eventType)
-        busObserver.register(eventType, forTarget: target, onPosted: onPostedEmptyCallback)
+        if let target = self.target {
+            let busObserver = busObserverForType(eventType)
+            busObserver.register(eventType, forTarget: target, onPosted: onPostedEmptyCallback)
+        }
     }
 
     /**
@@ -46,17 +50,21 @@ public class Bus {
     Unregisters from an event ; callback won't be performed anymore
     */
     public func unregisterForEvent<Event:Any>(eventType: Event.Type) {
-        let busObserver = busObserverForType(eventType)
-        busObserver.unregister(target)
+        if let target = self.target {
+            let busObserver = busObserverForType(eventType)
+            busObserver.unregister(target)
+        }
     }
 
     /**
     Unregisters from all registered events ;  callback won't be performed anymore
     */
     public func unregisterForAllEvents() {
-        for busObserver in Bus.busObservers.values {
-            if let objectObserver = busObserver as? BusObserverProtocol {
-                objectObserver.unregister(target)
+        if let target = self.target {
+            for busObserver in Bus.busObservers.values {
+                if let objectObserver = busObserver as? BusObserverProtocol {
+                    objectObserver.unregister(target)
+                }
             }
         }
     }

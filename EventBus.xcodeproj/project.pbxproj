@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1EC42173E58C061C14ED89 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3C1EC555880531686988893E /* README.md */; };
 		3C1EC4540FDC4E504AD6A61C /* EventBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C1ECEDDC7E4D8654812DA67 /* EventBusTests.swift */; };
 		3C1EC9562C6E029E6EA2AD36 /* EventBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C1ECFE4AD9C1E62E7E669A5 /* EventBus.framework */; };
 		3C1ECABEED40886AB0825A54 /* EventBus.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C1EC23F7AA20AF20B9B71F0 /* EventBus.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +28,7 @@
 		3C1EC23F7AA20AF20B9B71F0 /* EventBus.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EventBus.h; sourceTree = "<group>"; };
 		3C1EC25AE80DF97B77828B70 /* EventBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C1EC39E9587E5A90ED2659A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		3C1EC555880531686988893E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3C1EC9B3456610D4662C476A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		3C1ECEDDC7E4D8654812DA67 /* EventBusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBusTests.swift; sourceTree = "<group>"; };
 		3C1ECFE4AD9C1E62E7E669A5 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 				3C1EC2555C15DE7F3BEB62A7 /* Products */,
 				3C1ECA47E75B74FFC8F3C41E /* EventBus */,
 				3C1EC042DCA8DB1A6A436F8B /* EventBusTests */,
+				3C1EC555880531686988893E /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C1ECF046574EAC61810684B /* EventBus.swift in Sources */,
+				3C1EC42173E58C061C14ED89 /* README.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

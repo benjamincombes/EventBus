@@ -103,4 +103,3 @@ To integrate EventBus into your Xcode project using Carthage, specify it in your
 ```ogdl
 github "benjamincombes/EventBus"
 ```
-r
