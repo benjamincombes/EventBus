@@ -1,7 +1,17 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # EventBus
+
 A simple and type-safe facade for ```NSNotification``` with custom payload.
+
+Allows decoupling application parts while communicating and exchanging data and easily.
+
+## Benefits
+
+* Simple and swift-sytle syntax
+* No more magic strings for event names
+* Strongly typed user data
+* No more boilerplate code
 
 ## Usage
 
